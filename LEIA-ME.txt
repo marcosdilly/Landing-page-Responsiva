@@ -1,0 +1,36 @@
+GUIA RÁPIDO DE PUBLICAÇÃO
+
+1. Envie TODOS os arquivos para a pasta pública do seu domínio:
+   - index.html
+   - sucesso.html
+   - processa.php
+   - style.css
+   - pasta assets/
+
+2. Aponte o domínio para essa pasta.
+
+3. IMPORTANTE SOBRE O E-MAIL:
+   O arquivo processa.php envia os leads para:
+   marcoskim22@gmail.com
+   A hospedagem precisa permitir PHP e a função mail().
+
+4. Para maior confiabilidade, recomendamos configurar SMTP/PHPMailer na hospedagem.
+   Se sua hospedagem bloquear mail(), o formulário exibirá uma mensagem informando que o servidor precisa ser configurado.
+
+5. META ADS:
+   Antes de anunciar, coloque o ID do Meta Pixel no index.html, no trecho indicado.
+   Depois configure os eventos/conversões no Meta Ads.
+
+6. O formulário só é enviado quando:
+   - nome estiver preenchido;
+   - WhatsApp válido estiver preenchido;
+   - aniversário estiver preenchido;
+   - e-mail válido estiver preenchido;
+   - tipo de veículo estiver selecionado;
+   - consentimento estiver marcado.
+
+7. Após o envio bem-sucedido pelo servidor, o visitante é direcionado automaticamente para:
+   sucesso.html
+
+8. O botão da página de sucesso abre o WhatsApp do consultor:
+   (31) 98283-0303

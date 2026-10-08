@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com o consultor Marcos e receba atendimento sobre proteção para seu veículo.">
+  <meta name="theme-color" content="#063b88">
+  <title>APVS Brasil | Fale com o Consultor Marcos</title>
+  <!-- Meta Pixel: substitua SEU_PIXEL_ID pelo ID do seu Pixel antes de publicar -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','SEU_PIXEL_ID');
+    fbq('track','PageView');
+  </script>
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="overlay"></div>
+
+      <header class="topbar">
+        <img src="assets/apvs-brasil.jpeg" class="logo" alt="APVS Brasil">
+        <span class="badge">ATENDIMENTO PERSONALIZADO</span>
+      </header>
+
+      <div class="hero-content">
+        <div class="copy">
+          <p class="eyebrow">APVS BRASIL</p>
+          <h1>Proteção para o seu veículo começa com uma conversa.</h1>
+          <p class="subtitle">
+            Preencha seus dados e o consultor <strong>Marcos</strong> entrará em contato
+            para entender o que você precisa.
+          </p>
+          <div class="trust">
+            <span>✓ Atendimento humano</span>
+            <span>✓ Carro, moto ou caminhão</span>
+            <span>✓ Resposta pelo WhatsApp</span>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2>Solicite um contato</h2>
+          <p class="form-intro">Preencha todos os campos para enviar sua solicitação.</p>
+
+          <form id="leadForm" action="processa.php" method="POST" novalidate>
+            <div class="field">
+              <label for="nome">Nome completo *</label>
+              <input id="nome" name="nome" type="text" autocomplete="name"
+                     placeholder="Digite seu nome completo" required minlength="3">
+            </div>
+
+            <div class="field">
+              <label for="whatsapp">WhatsApp *</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel"
+                     autocomplete="tel" placeholder="(31) 99999-9999" required>
+            </div>
+
+            <div class="field">
+              <label for="aniversario">Data de aniversário *</label>
+              <input id="aniversario" name="aniversario" type="date" required>
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail *</label>
+              <input id="email" name="email" type="email" autocomplete="email"
+                     placeholder="seuemail@exemplo.com" required>
+            </div>
+
+            <div class="field">
+              <label for="veiculo">Tipo de veículo *</label>
+              <select id="veiculo" name="veiculo" required>
+                <option value="">Selecione uma opção</option>
+                <option value="Carro">Carro</option>
+                <option value="Moto">Moto</option>
+                <option value="Caminhão">Caminhão</option>
+              </select>
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" name="consentimento" value="Sim" required>
+              <span>Autorizo o contato para atendimento sobre minha solicitação.</span>
+            </label>
+
+            <button type="submit" id="submitBtn">QUERO RECEBER UM CONTATO</button>
+            <p class="privacy">Seus dados serão usados para atendimento e contato referente a esta solicitação.</p>
+            <p id="formError" class="error" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('leadForm');
+    const button = document.getElementById('submitBtn');
+    const error = document.getElementById('formError');
+
+    form.addEventListener('submit', function (event) {
+      error.textContent = '';
+
+      // Impede envio incompleto e mostra a primeira validação nativa.
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        form.reportValidity();
+        return;
+      }
+
+      // Validação adicional do WhatsApp brasileiro.
+      const whatsapp = document.getElementById('whatsapp').value.replace(/\D/g, '');
+      if (whatsapp.length < 10 || whatsapp.length > 11) {
+        event.preventDefault();
+        error.textContent = 'Digite um número de WhatsApp válido com DDD.';
+        document.getElementById('whatsapp').focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'ENVIANDO...';
+    });
+  </script>
+</body>
+</html>
